@@ -15,10 +15,6 @@ When("{word} shouts") do |name|
   @shouty.shout(name, ARBITRARY_MESSAGE)
 end
 
-When('{word} shouts') do |name|
-  @shouty.shout(name, ARBITRARY_MESSAGE)
-end
-
 Then('{word} should hear {word}') do |name1, name2|
   expect(@shouty.shouts_heard_by(name1).include?(name2)).to be true
 end
