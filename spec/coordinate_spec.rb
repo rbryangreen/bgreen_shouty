@@ -12,9 +12,9 @@ describe Coordinate do
     expect(a.distance_from(b)).to eq(600)
   end
 
-  # it "calculates the distance from another coordinate" do
-  #   a = Coordinate.new(0, 0)
-  #   b = Coordinate.new(300, 400)
-  #   expect(a.distance_from(b)).to eq(500)
-  # end
+  it "calculates the distance from another coordinate" do
+    a = Coordinate.new(0, 0)
+    b = Coordinate.new(300, 400)
+    expect(a.distance_from(b)).to eq(500)
+  end
 end

@@ -7,20 +7,24 @@ Before do
   @shouty = Shouty.new
 end
 
-Given('Lucy is at {int}, {int}') do |x, y|
-  @shouty.set_location("Lucy", Coordinate.new(x, y))
+Given('{word} is at {int}, {int}') do |name, x, y|
+  @shouty.set_location(name, Coordinate.new(x, y))
 end
 
-Given('Sean is at {int}, {int}') do |x, y|
-  @shouty.set_location("Sean", Coordinate.new(x, y))
+When("Oscar shouts") do
+  @shouty.shout('Oscar', ARBITRARY_MESSAGE)
 end
 
 When('Sean shouts') do
   @shouty.shout("Sean", ARBITRARY_MESSAGE)
 end
 
-Then('Lucy should hear Sean') do
-  expect(@shouty.shouts_heard_by("Lucy").size).to eq(1)
+Then('{word} should hear {word}') do |name1, name2|
+  expect(@shouty.shouts_heard_by(name1).include?(name2)).to be true
+end
+
+Then('{word} should not hear {word}') do |name1, name2|
+  expect(@shouty.shouts_heard_by(name1).include?(name2)).to be false
 end
 
 Then('Lucy should hear nothing') do
